@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block header%}
+    <h2 class="text-center mb-4">Register User</h2>
+{% endblock %}
+{% block body %} 
+    <form method="POST"class="col-md-6 mx-auto">
+        {{ form.hidden_tag() }}
+        <div class="form-group w-8">
+            <label for="{{ form.name.id }}">Name</label>
+            {{ form.name(class="form-control", id=form.name.id) }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.email.id }}">Email</label>
+            {{ form.email(class="form-control", id=form.email.id) }}
+            {% if form.errors %}
+                <div class="text-danger">{{ form.errors['email'][0] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.role.id }}">Role</label>
+            {{ form.role(class="form-control", id=form.role.id) }}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn mt-3 btn-dark") }}
+        </div>
+    </form>
+{% endblock %}
